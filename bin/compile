@@ -42,7 +42,7 @@ echo "$LD_LIBRARY_PATH"
 echo "Building runtime environment" | arrow
 mkdir -p $BUILD_DIR/.profile.d
 
-cat <<EOF > $BUILD_DIR/.profile.d/$BUILDPACK_NAME.sh
+cat <<EOF > $HOME/.profile.d/$BUILDPACK_NAME.sh
 export LD_LIBRARY_PATH="\$LD_LIBRARY_PATH:${LD_LIBRARY_PATH//$BUILD_DIR//app}"
 export LIBRARY_PATH="\$LIBRARY_PATH:${LIBRARY_PATH//$BUILD_DIR//app}"
 export PKG_CONFIG_PATH="\$PKG_CONFIG_PATH:${PKG_CONFIG_PATH//$BUILD_DIR//app}"
