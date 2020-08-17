@@ -34,7 +34,7 @@ cp -r /tmp/codon/tmp/cache/libgraphqlparser-files $BUILD_DIR/libgraphqlparser
 
 # Make the library files available to later buildpacks
 echo "Adding libgraphqlparser to LD_LIBRARY_PATH..."
-export LD_LIBRARY_PATH="$HOME/libgraphqlparser/lib:$LD_LIBRARY_PATH"
+export LD_LIBRARY_PATH="$HOME/libgraphqlparser/usr/local/lib:$LD_LIBRARY_PATH"
 echo "$LD_LIBRARY_PATH"
 
 exit 0
