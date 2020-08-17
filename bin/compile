@@ -5,6 +5,8 @@ BUILD_DIR=${1:-}
 CACHE_DIR=${2:-}
 ENV_DIR=${3:-}
 
+BUILDPACK_NAME=libgraphqlparser
+
 # $1 = build_dir (location of the app)
 # $2 = cache_dir
 # $3 = env_dir (contains a file for each of the app's config variables)
@@ -36,5 +38,14 @@ cp -r /tmp/codon/tmp/cache/libgraphqlparser-files $BUILD_DIR/libgraphqlparser
 echo "Adding libgraphqlparser to LD_LIBRARY_PATH..."
 export LD_LIBRARY_PATH="$HOME/libgraphqlparser/usr/local/lib:$LD_LIBRARY_PATH"
 echo "$LD_LIBRARY_PATH"
+
+echo "Building runtime environment" | arrow
+mkdir -p $BUILD_DIR/.profile.d
+
+cat <<EOF > $BUILD_DIR/.profile.d/$BUILDPACK_NAME.sh
+export LD_LIBRARY_PATH="\$LD_LIBRARY_PATH:${LD_LIBRARY_PATH//$BUILD_DIR//app}"
+export LIBRARY_PATH="\$LIBRARY_PATH:${LIBRARY_PATH//$BUILD_DIR//app}"
+export PKG_CONFIG_PATH="\$PKG_CONFIG_PATH:${PKG_CONFIG_PATH//$BUILD_DIR//app}"
+EOF
 
 exit 0
