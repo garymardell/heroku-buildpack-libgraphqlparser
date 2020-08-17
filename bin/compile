@@ -9,8 +9,8 @@ ENV_DIR=${3:-}
 # $2 = cache_dir
 # $3 = env_dir (contains a file for each of the app's config variables)
 
-mkdir -p $BUILD_DIR
-cd $BUILD_DIR
+mkdir -p $CACHE_DIR
+cd $CACHE_DIR
 
 # Download libgraphqlparser
 if [ ! -f $2/v0.4.1.tar.gz ]; then
@@ -18,21 +18,23 @@ if [ ! -f $2/v0.4.1.tar.gz ]; then
 fi
 
 # Install libgraphqlparser
-mkdir -p $BUILD_DIR/libgraphqlparser
+mkdir -p $CACHE_DIR/libgraphqlparser
 tar -xvzf v0.4.1.tar.gz -C $2/libgraphqlparser
 
-cd $BUILD_DIR/libgraphqlparser/libgraphqlparser-0.4.1
+cd $CACHE_DIR/libgraphqlparser/libgraphqlparser-0.4.1
 
 cmake .
 make
-make install DESTDIR=$BUILD_DIR/libgraphqlparser-files
+make install DESTDIR=$CACHE_DIR/libgraphqlparser-files
 
 mkdir -p $HOME/libgraphqlparser
-cp -r $BUILD_DIR/libgraphqlparser-files/usr/local/* $BUILD_DIR/libgraphqlparser
+
+cp -r $$CACHE_DIR/libgraphqlparser/* /usr/lib
+cp -r $CACHE_DIR/libgraphqlparser-files/usr/local/* /usr/lib
 
 # Make the library files available to later buildpacks
 echo "Adding libgraphqlparser to LD_LIBRARY_PATH..."
-export LD_LIBRARY_PATH="$BUILD_DIR/libgraphqlparser/lib:$LD_LIBRARY_PATH"
+export LD_LIBRARY_PATH="$HOME/libgraphqlparser/lib:$LD_LIBRARY_PATH"
 echo "$LD_LIBRARY_PATH"
 
 exit 0
