@@ -38,7 +38,7 @@ mkdir -p $HOME/libgraphqlparser
 cp -r /tmp/codon/tmp/cache/libgraphqlparser-files $BUILD_DIR/libgraphqlparser
 
 # Make the library files available to later buildpacks
-echo "Building runtime environment" | arrow
+echo "Building runtime environment"
 
 mkdir -p $BUILD_DIR/.profile.d
 cat <<EOF >$BUILD_DIR/.profile.d/libgraphqlparser.sh
