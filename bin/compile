@@ -29,8 +29,8 @@ make install DESTDIR=$CACHE_DIR/libgraphqlparser-files
 
 mkdir -p $HOME/libgraphqlparser
 
-cp -r $$CACHE_DIR/libgraphqlparser/* /usr/lib
-cp -r $CACHE_DIR/libgraphqlparser-files/usr/local/* /usr/lib
+# cp -r $CACHE_DIR/libgraphqlparser-files/usr/local/* $BUILD_DIR/libgraphqlparser
+cp -r /tmp/codon/tmp/cache/libgraphqlparser-files $BUILD_DIR/libgraphqlparser
 
 # Make the library files available to later buildpacks
 echo "Adding libgraphqlparser to LD_LIBRARY_PATH..."
