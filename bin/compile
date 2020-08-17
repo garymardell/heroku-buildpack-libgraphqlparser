@@ -42,9 +42,9 @@ echo "Building runtime environment"
 
 mkdir -p $BUILD_DIR/.profile.d
 cat <<EOF >$BUILD_DIR/.profile.d/libgraphqlparser.sh
-export LD_LIBRARY_PATH="\$BUILD_DIR/libgraphqlparser/usr/local/lib:\$LD_LIBRARY_PATH"
-export LIBRARY_PATH="\$BUILD_DIR/libgraphqlparser/usr/local/lib:\$LIBRARY_PATH"
-export INCLUDE_PATH="\$BUILD_DIR/libgraphqlparser/usr/local/include:\$INCLUDE_PATH"
+export LD_LIBRARY_PATH="\$HOME/libgraphqlparser/usr/local/lib:\$LD_LIBRARY_PATH"
+export LIBRARY_PATH="\$HOME/libgraphqlparser/usr/local/lib:\$LIBRARY_PATH"
+export INCLUDE_PATH="\$HOME/libgraphqlparser/usr/local/include:\$INCLUDE_PATH"
 export CPATH="\$INCLUDE_PATH"
 export CPPPATH="\$INCLUDE_PATH"
 EOF
