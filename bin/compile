@@ -44,7 +44,7 @@ echo "Building runtime environment" | arrow
 mkdir -p $HOME/.profile.d
 
 mkdir -p $BUILD_DIR/.profile.d
-cat <<EOF >$BUILD_DIR/.profile.d/000_apt.sh
+cat <<EOF >$BUILD_DIR/.profile.d/libgraphqlparser.sh
 export LD_LIBRARY_PATH="\$HOME/libgraphqlparser/usr/local/lib:\$LD_LIBRARY_PATH"
 export LIBRARY_PATH="\$HOME/libgraphqlparser/usr/local/lib:\$LIBRARY_PATH"
 export INCLUDE_PATH="\$HOME/libgraphqlparser/usr/local/include:\$INCLUDE_PATH"
