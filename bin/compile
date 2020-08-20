@@ -18,15 +18,15 @@ mkdir -p $CACHE_DIR
 cd $CACHE_DIR
 
 # Download libgraphqlparser
-if [ ! -f $2/v0.4.1.tar.gz ]; then
-  wget https://github.com/graphql/libgraphqlparser/archive/v0.4.1.tar.gz
+if [ ! -f $2/v0.7.0.tar.gz ]; then
+  wget https://github.com/graphql/libgraphqlparser/archive/v0.7.0.tar.gz
 fi
 
 # Install libgraphqlparser
 mkdir -p $CACHE_DIR/libgraphqlparser
-tar -xvzf v0.4.1.tar.gz -C $2/libgraphqlparser
+tar -xvzf v0.7.0.tar.gz -C $2/libgraphqlparser
 
-cd $CACHE_DIR/libgraphqlparser/libgraphqlparser-0.4.1
+cd $CACHE_DIR/libgraphqlparser/libgraphqlparser-0.7.0
 
 cmake .
 make
